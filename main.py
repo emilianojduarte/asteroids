@@ -44,7 +44,11 @@ def main():
             if asteroid.collide(player):
                 print("Game over!")
                 sys.exit()
-
+            for shot in shots:
+                if shot.collide(asteroid):
+                    shot.kill()
+                    asteroid.kill()
+        
         pygame.display.flip()
 
         #limita los fps a 60
