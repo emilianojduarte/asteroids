@@ -1,8 +1,9 @@
+import sys
 import pygame
 from constants import *
-from player import *
-from asteroid import *
-from asteroidfield import *
+from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 
 def main():
     pygame.init()
@@ -38,6 +39,11 @@ def main():
 
         for obj in drawable:
             obj.draw(screen)
+
+        for asteroid in asteroids:
+            if asteroid.collide(player):
+                print("Game over!")
+                sys.exit()
 
         pygame.display.flip()
 
